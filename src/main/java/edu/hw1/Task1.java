@@ -1,33 +1,14 @@
 package edu.hw1;
 
 import java.util.logging.Logger;
+import java.util.concurrent.*;
 
 public class Task1 {
 
-    private final static Logger logger = Logger.getLogger("HW1 Task1 logger");
+    private final static Logger logger = Logger.getLogger("HW1_Task1_logger");
 
-    public static void main(String[] args) {
-//        System.out.println(minutesToSeconds("01:00"));
-//        System.out.println(minutesToSeconds("13:56"));
-//        System.out.println(minutesToSeconds("14:59"));
-//        System.out.println(minutesToSeconds("01:10"));
-//        System.out.println(minutesToSeconds("10:01"));
-//        System.out.println(minutesToSeconds("00:01"));
-//        System.out.println(minutesToSeconds("01:00"));
-//        System.out.println(minutesToSeconds("00:00"));
-//        System.out.println(minutesToSeconds("3000000000:59"));
-//        System.out.println(minutesToSeconds("10:60"));
-//        System.out.println(minutesToSeconds("10:99"));
-//        System.out.println(minutesToSeconds("-10:30"));
-//        System.out.println(minutesToSeconds("10:-30"));
-//        System.out.println(minutesToSeconds("-10:-30"));
-//        System.out.println(minutesToSeconds("1099"));
-//        System.out.println(minutesToSeconds("abc"));
-//        System.out.println(minutesToSeconds("abc:abc"));
-//        System.out.println(minutesToSeconds(""));
-//        System.out.println(minutesToSeconds(null));
-    }
 
+    @SuppressWarnings("MagicNumber")
     public long minutesToSeconds(String input) {
         try {
             if (input == null) {
@@ -38,13 +19,13 @@ public class Task1 {
                 long totalSecondsNumber = 0L;
                 String[] time = input.split(":", 2);
                 if (time.length < 2) {
-                    logger.warning("Incorrect input format");
+                    logger.warning("Incorrect input format. Input is not like a time pattern.");
                     return -1L;
                 }
                 long minutes = Long.parseLong(time[0]);
                 int seconds = Integer.parseInt(time[1]);
                 if (minutes < 0L || seconds < 0 || seconds >= 60) {
-                    logger.warning("Incorrect input format");
+                    logger.warning("Incorrect input format. Number of minutes/seconds are incorrect.");
                     return -1L;
                 }
                 totalSecondsNumber += minutes * 60L;
