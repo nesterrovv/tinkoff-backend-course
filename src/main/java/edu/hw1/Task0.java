@@ -6,11 +6,12 @@ public class Task0 {
 
 //    public static void main(String[] args) {}
 
+    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+
     private Task0() {}
 
     public final void solveZeroTask() {
-        Logger logger = Logger.getLogger("My logger");
-        logger.info("Hello world!");
+        LOGGER.info("Hello world!");
     }
 
 }
