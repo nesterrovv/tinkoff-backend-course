@@ -1,16 +1,17 @@
 package edu.hw1;
 
-import java.util.logging.Logger;
-
 public class Task2 {
 
 //    public static void main(String[] args) {}
 
+    private final static Long BASE = 10L;
+
     public int countNumberOfDigits(long number) {
+        long copy = number;
         int counter = 1;
-        number /= 10;
-        while (number != 0) {
-            number /= 10;
+        copy /= BASE;
+        while (copy != 0) {
+            copy /= BASE;
             counter++;
         }
         return counter;
