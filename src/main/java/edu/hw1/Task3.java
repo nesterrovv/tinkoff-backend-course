@@ -10,7 +10,7 @@ public class Task3 {
     private final static Logger LOGGER = Logger.getLogger("LOGGER");
 
     public boolean isNestable(int[] first, int[] second) {
-        if (first == null || second == null ||first.length == 0 || second.length == 0) {
+        if (first == null || second == null || first.length == 0 || second.length == 0) {
             return false;
         } else {
             return findMinimum(first) > findMinimum(second) && findMaximum(first) < findMaximum(second);
