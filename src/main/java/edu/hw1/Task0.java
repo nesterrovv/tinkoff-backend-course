@@ -4,13 +4,11 @@ import java.util.logging.Logger;
 
 public class Task0 {
 
-//    public static void main(String[] args) {
-//
-//    }
+//    public static void main(String[] args) {}
 
-    private Task0() {};
+    private Task0() {}
 
-    public void solveZeroTask() {
+    public final void solveZeroTask() {
         Logger logger = Logger.getLogger("My logger");
         logger.info("Hello world!");
     }
