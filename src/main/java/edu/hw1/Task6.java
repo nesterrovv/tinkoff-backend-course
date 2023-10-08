@@ -1,7 +1,6 @@
 package edu.hw1;
 
 import edu.exceptions.IncorrectArgumentException;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.logging.Logger;
