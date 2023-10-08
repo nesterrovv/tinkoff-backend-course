@@ -10,12 +10,12 @@ public class Task6 {
     private final static Logger LOGGER = Logger.getLogger("LOGGER");
     private static final int KAPREKARS_CONSTANT = 6174;
     private static final int BASE = 10;
-    private static final int MINIMAL_THREE_DIGIT_NUMBER = 1000;
-    private static final int MAXIMAL_THREE_DIGIT_NUMBER = 9999;
+    private static final int MINIMAL_FOUR_DIGIT_NUMBER = 1000;
+    private static final int MAXIMAL_FOUR_DIGIT_NUMBER = 9999;
 
     public int countK(int n) {
         try {
-            if (n < MINIMAL_THREE_DIGIT_NUMBER || n > MAXIMAL_THREE_DIGIT_NUMBER) {
+            if (n < MINIMAL_FOUR_DIGIT_NUMBER || n > MAXIMAL_FOUR_DIGIT_NUMBER) {
                 throw new IncorrectArgumentException();
             }
             int number = n;
@@ -33,7 +33,7 @@ public class Task6 {
 
     private int modify(int n) {
         int argument = n;
-        while (!(argument >= MINIMAL_THREE_DIGIT_NUMBER && argument <= MAXIMAL_THREE_DIGIT_NUMBER)) {
+        while (!(argument >= MINIMAL_FOUR_DIGIT_NUMBER && argument <= MAXIMAL_FOUR_DIGIT_NUMBER)) {
             argument *= BASE;
         }
         String numberStr = Long.toString(argument);
