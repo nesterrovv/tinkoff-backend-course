@@ -1,5 +1,7 @@
 package edu.hw1;
 
+import edu.exceptions.IncorrectArgumentException;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.logging.Logger;
@@ -51,15 +53,6 @@ public class Task6 {
         }
         int second = Integer.parseInt(sortedNumberStr2.toString());
         return second - first;
-    }
-
-    static class IncorrectArgumentException extends Exception {
-
-        @Override
-        public String getMessage() {
-            return "Incorrect argument.";
-        }
-
     }
 
 }
