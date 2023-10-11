@@ -1,39 +1,59 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task2Test {
 
-    @Test
-    @DisplayName("Base inputs test")
-    public void testBaseInput() {
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(1234L));
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(1111L));
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(9000L));
+    @ParameterizedTest
+    @CsvSource({
+        "1234, 4",
+        "1111, 4",
+        "9000, 4"
+    })
+    public void testBaseInput(long input, int expected) {
+        // Arrange & Act
+        int result = Task2.countNumberOfDigits(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Test negative numbers input test")
-    public void testNegativeNumberInput() {
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(-1234L));
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(-1111L));
-        Assertions.assertEquals(4, Task2.countNumberOfDigits(-9000L));
+    @ParameterizedTest
+    @CsvSource({
+        "-1234, 4",
+        "-1111, 4",
+        "-9000, 4"
+    })
+    public void testNegativeNumberInput(long input, int expected) {
+        // Arrange & Act
+        int result = Task2.countNumberOfDigits(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Zeroes input test")
-    public void testZeroInput() {
-        Assertions.assertEquals(1, Task2.countNumberOfDigits(0L));
-        Assertions.assertEquals(1, Task2.countNumberOfDigits(0000L));
+    @ParameterizedTest
+    @CsvSource({
+        "0, 1",
+        "0000, 1"
+    })
+    public void testZeroInput(long input, int expected) {
+        // Arrange & Act
+        int result = Task2.countNumberOfDigits(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Big number input test")
-    public void testBigNumberInput() {
-        Assertions.assertEquals(10, Task2.countNumberOfDigits(9_999_999_999L));
-        Assertions.assertEquals(10, Task2.countNumberOfDigits(9_999_999_990L));
+    @ParameterizedTest
+    @CsvSource({
+        "9999999999, 10",
+        "9999999990, 10"
+    })
+    public void testBigNumberInput(long input, int expected) {
+        // Arrange & Act
+        int result = Task2.countNumberOfDigits(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
 }

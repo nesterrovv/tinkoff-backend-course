@@ -1,65 +1,100 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task1Test {
 
     private final Task1 task1 = new Task1();
 
-    @Test
-    @DisplayName("Base inputs test")
-    public void testBaseInput() {
-        Assertions.assertEquals(836, task1.minutesToSeconds("13:56"));
-        Assertions.assertEquals(899, task1.minutesToSeconds("14:59"));
+    @ParameterizedTest
+    @CsvSource({
+        "13:56, 836",
+        "14:59, 899"
+    })
+    public void testBaseInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Inputs with zero test")
-    public void testInputWithZeroes() {
-        Assertions.assertEquals(70, task1.minutesToSeconds("01:10"));
-        Assertions.assertEquals(601, task1.minutesToSeconds("10:01"));
-        Assertions.assertEquals(1, task1.minutesToSeconds("00:01"));
-        Assertions.assertEquals(60, task1.minutesToSeconds("01:00"));
-        Assertions.assertEquals(0, task1.minutesToSeconds("00:00"));
+    @ParameterizedTest
+    @CsvSource({
+        "01:10, 70",
+        "10:01, 601",
+        "00:01, 1",
+        "01:00, 60",
+        "00:00, 0"
+    })
+    public void testInputWithZeroes(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Bit number input test")
-    public void testBigNumberInput() {
-        Assertions.assertEquals(180000000001L, task1.minutesToSeconds("3000000000:01"));
+    @ParameterizedTest
+    @CsvSource({
+        "3000000000:01, 180000000001"
+    })
+    public void testBigNumberInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Incorrect numbers input test")
-    public void testIncorrectNumberInput() {
-        Assertions.assertEquals(-1, task1.minutesToSeconds("10:60"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("10:99"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("-10:30"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("10:-30"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("-10:-30"));
+    @ParameterizedTest
+    @CsvSource({
+        "10:60, -1",
+        "10:99, -1",
+        "-10:30, -1",
+        "10:-30, -1",
+        "-10:-30, -1"
+    })
+    public void testIncorrectNumberInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Incorrect input test")
-    public void testIncorrectInput() {
-        Assertions.assertEquals(-1, task1.minutesToSeconds("1099"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("abc"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds("abc:abc"));
-        Assertions.assertEquals(-1, task1.minutesToSeconds(""));
+    @ParameterizedTest
+    @CsvSource({
+        "1099, -1",
+        "abc, -1",
+        "abc:abc, -1",
+        ", -1"
+    })
+    public void testIncorrectInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Empty input test")
-    public void testEmptyInput() {
-        Assertions.assertEquals(-1, task1.minutesToSeconds(""));
+    @ParameterizedTest
+    @CsvSource({
+        ", -1"
+    })
+    public void testEmptyInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Null input test")
-    public void testNullInput() {
-        Assertions.assertEquals(-1, task1.minutesToSeconds(null));
+    @ParameterizedTest
+    @CsvSource({
+        "null, -1"
+    })
+    public void testNullInput(String input, long expected) {
+        // Arrange & Act
+        long result = task1.minutesToSeconds(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
 }

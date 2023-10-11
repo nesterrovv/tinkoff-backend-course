@@ -1,44 +1,65 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task6Test {
 
     private final Task6 task6 = new Task6();
 
-    @Test
-    @DisplayName("Base test")
-    public void testInputWithoutModifying() {
-        Assertions.assertEquals(5, task6.countK(6621));
-        Assertions.assertEquals(4, task6.countK(6554));
-        Assertions.assertEquals(3, task6.countK(1234));
-        Assertions.assertEquals(0, task6.countK(6174));
-        Assertions.assertEquals(3, task6.countK(3524));
+    @ParameterizedTest
+    @CsvSource({
+        "6621, 5",
+        "6554, 4",
+        "1234, 3",
+        "6174, 0",
+        "3524, 3"
+    })
+    public void testInputWithoutModifying(int input, int expected) {
+        // Arrange & Act
+        int result = task6.countK(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Test number with 4 equal digits")
-    public void testFourEqualDigitsNumberTest() {
-        Assertions.assertEquals(-1, task6.countK(1111));
-        Assertions.assertEquals(-1, task6.countK(2222));
-        Assertions.assertEquals(-1, task6.countK(6666));
+    @ParameterizedTest
+    @CsvSource({
+        "1111, -1",
+        "2222, -1",
+        "6666, -1"
+    })
+    public void testFourEqualDigitsNumberTest(int input, int expected) {
+        // Arrange & Act
+        int result = task6.countK(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Zero saving necessity input test")
-    public void testInputWithZeroSavingNecessity() {
-        Assertions.assertEquals(5, task6.countK(1000));
-        Assertions.assertEquals(5, task6.countK(9998));
+    @ParameterizedTest
+    @CsvSource({
+        "1000, 5",
+        "9998, 5"
+    })
+    public void testInputWithZeroSavingNecessity(int input, int expected) {
+        // Arrange & Act
+        int result = task6.countK(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Incorrect input test")
-    public void testIncorrectInput() {
-        Assertions.assertEquals(-1, task6.countK(0));
-        Assertions.assertEquals(-1, task6.countK(10000));
-        Assertions.assertEquals(-1, task6.countK(100));
+    @ParameterizedTest
+    @CsvSource({
+        "0, -1",
+        "10000, -1",
+        "100, -1"
+    })
+    public void testIncorrectInput(int input, int expected) {
+        // Arrange & Act
+        int result = task6.countK(input);
+        // Assert
+        assertThat(result).isEqualTo(expected);
     }
 
 }
