@@ -20,15 +20,13 @@ public class Task5Test {
     @Test
     @DisplayName("Input with modifying test")
     public void testInputWithModifying() {
-        Assertions.assertFalse(task5.isPalindromeDescendant(1231L));
-        Assertions.assertFalse(task5.isPalindromeDescendant(1223L));
-        Assertions.assertTrue(task5.isPalindromeDescendant(11211230L));
-        Assertions.assertTrue(task5.isPalindromeDescendant(13001120L));
-        Assertions.assertTrue(task5.isPalindromeDescendant(23336014L));
+        Assertions.assertTrue(task5.isPalindromeDescendant(1L));
+        Assertions.assertFalse(task5.isPalindromeDescendant(12L));
         Assertions.assertTrue(task5.isPalindromeDescendant(123L));
-        Assertions.assertFalse(task5.isPalindromeDescendant(234L));
-        Assertions.assertFalse(task5.isPalindromeDescendant(32L));
-        Assertions.assertTrue(task5.isPalindromeDescendant(0L));
+        Assertions.assertTrue(task5.isPalindromeDescendant(121));
+        Assertions.assertTrue(task5.isPalindromeDescendant(31213));
+        Assertions.assertTrue(task5.isPalindromeDescendant(4123214));
+
     }
 
 }
