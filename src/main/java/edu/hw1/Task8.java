@@ -16,7 +16,7 @@ public class Task8 {
     public boolean knightBoardCapture(int[][] board) {
         try {
             if (board == null || board.length != BOARD_LENGTH || board[0].length != BOARD_LENGTH) {
-                throw new IncorrectArgumentException();
+                throw new IncorrectArgumentException("Board should be a 2D-array with 8 rows nad 8 columns");
             }
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {

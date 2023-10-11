@@ -6,11 +6,12 @@ import java.util.logging.Logger;
 public class Task7 {
 
     private static final Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final String INCORRECT_ARG_MESSAGE = "Number and the shifts amount must be non-negative";
 
     public int rotateLeft(int n, int shift) {
         try {
             if (n < 0 || shift < 0) {
-                throw new IncorrectArgumentException();
+                throw new IncorrectArgumentException(INCORRECT_ARG_MESSAGE);
             }
             if (n == 0) {
                 return 0;
@@ -31,7 +32,7 @@ public class Task7 {
     public int rotateRight(int n, int shift) {
         try {
             if (n < 0 || shift < 0) {
-                throw new IncorrectArgumentException();
+                throw new IncorrectArgumentException(INCORRECT_ARG_MESSAGE);
             }
             if (n == 0) {
                 return 0;

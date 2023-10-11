@@ -16,7 +16,7 @@ public class Task6 {
     public int countK(int n) {
         try {
             if (n < MINIMAL_FOUR_DIGIT_NUMBER || n > MAXIMAL_FOUR_DIGIT_NUMBER) {
-                throw new IncorrectArgumentException();
+                throw new IncorrectArgumentException("Number should be from [1000; 9998]");
             }
             int number = n;
             int counter = 0;
