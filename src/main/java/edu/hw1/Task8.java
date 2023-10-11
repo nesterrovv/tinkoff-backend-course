@@ -27,7 +27,7 @@ public class Task8 {
             }
             return true;
         } catch (IncorrectArgumentException incorrectArgumentException) {
-            LOGGER.warning(incorrectArgumentException.getMessage());
+            LOGGER.severe(incorrectArgumentException.getMessage());
             return false;
         }
     }

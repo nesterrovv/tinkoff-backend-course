@@ -23,7 +23,7 @@ public class Task7 {
             }
             return toDecimalNumberSystem(binaryNumber);
         } catch (IncorrectArgumentException incorrectArgumentException) {
-            LOGGER.warning(incorrectArgumentException.getMessage());
+            LOGGER.severe(incorrectArgumentException.getMessage());
             return -1;
         }
     }
@@ -44,7 +44,7 @@ public class Task7 {
             }
             return toDecimalNumberSystem(binaryNumber);
         } catch (IncorrectArgumentException incorrectArgumentException) {
-            LOGGER.warning(incorrectArgumentException.getMessage());
+            LOGGER.severe(incorrectArgumentException.getMessage());
             return -1;
         }
     }

@@ -24,7 +24,7 @@ public class Task1 {
             LOGGER.warning("Input is incorrect.");
             return -1L;
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException exception) {
-            LOGGER.warning(exception.getMessage());
+            LOGGER.severe(exception.getMessage());
             return -1L;
         }
     }
