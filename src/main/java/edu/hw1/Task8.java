@@ -5,13 +5,13 @@ import java.util.logging.Logger;
 
 public class Task8 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
-    private final static int BOARD_LENGTH = 8;
-    private final static int BIG_NEGATIVE_SHIFT = -2;
-    private final static int BIG_POSITIVE_SHIFT = 2;
-    private final static int SMALL_NEGATIVE_SHIFT = -1;
-    private final static int SMALL_POSITIVE_SHIFT = 1;
-    private final static int KNIGHT_EXISTS = 1;
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final int BOARD_LENGTH = 8;
+    private static final int BIG_NEGATIVE_SHIFT = -2;
+    private static final int BIG_POSITIVE_SHIFT = 2;
+    private static final int SMALL_NEGATIVE_SHIFT = -1;
+    private static final int SMALL_POSITIVE_SHIFT = 1;
+    private static final int KNIGHT_EXISTS = 1;
 
     public boolean knightBoardCapture(int[][] board) {
         try {

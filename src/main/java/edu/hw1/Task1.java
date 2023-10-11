@@ -4,9 +4,9 @@ import java.util.logging.Logger;
 
 public class Task1 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
 
-    private final static Long SECONDS_IN_MINUTE = 60L;
+    private static final Long SECONDS_IN_MINUTE = 60L;
 
     public long minutesToSeconds(String input) {
         try {

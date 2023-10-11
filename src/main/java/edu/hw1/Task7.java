@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Task7 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
 
     public int rotateLeft(int n, int shift) {
         try {

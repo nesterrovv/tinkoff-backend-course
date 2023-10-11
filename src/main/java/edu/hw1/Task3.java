@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Task3 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
 
     public boolean isNestable(int[] first, int[] second) {
         if (first == null || second == null || first.length == 0 || second.length == 0) {

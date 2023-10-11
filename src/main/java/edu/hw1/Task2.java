@@ -2,7 +2,7 @@ package edu.hw1;
 
 public class Task2 {
 
-    private final static Long BASE = 10L;
+    private static final Long BASE = 10L;
 
     public int countNumberOfDigits(long number) {
         long copy = number;

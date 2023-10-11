@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 public class Task0 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
 
     private Task0() {}
 

@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class Task6 {
 
-    private final static Logger LOGGER = Logger.getLogger("LOGGER");
+    private static final Logger LOGGER = Logger.getLogger("LOGGER");
     private static final int KAPREKARS_CONSTANT = 6174;
     private static final int BASE = 10;
     private static final int MINIMAL_FOUR_DIGIT_NUMBER = 1000;
