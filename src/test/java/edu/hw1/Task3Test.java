@@ -11,7 +11,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("Base inputs test")
-    public void testBaseInput() {
+    void testBaseInput() {
         // Arrange
         int[] arrayA = new int[] {1, 2, 3, 4};
         int[] arrayB = new int[] {0, 6};
@@ -35,7 +35,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("Equal arrays input test")
-    public void testMonotonicEqualsInput() {
+    void testMonotonicEqualsInput() {
         // Arrange
         int[] arrayA = new int[] {1, 10};
         int[] arrayB = new int[] {1, 20};
@@ -55,7 +55,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("Empty input test")
-    public void testEmptyInput() {
+    void testEmptyInput() {
         // Arrange
         int[] arrayA = new int[] {1, 2, 3, 4};
         int[] arrayB = new int[0];
@@ -75,7 +75,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("Null input test")
-    public void testNullInput() {
+    void testNullInput() {
         // Arrange
         int[] arrayA = null;
         int[] arrayB = new int[] {1, 2};

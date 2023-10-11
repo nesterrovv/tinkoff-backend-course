@@ -16,7 +16,7 @@ public class Task5Test {
         "121, true",
         "1221, true"
     })
-    public void testInputWithoutModifying(long input, boolean expected) {
+    void testInputWithoutModifying(long input, boolean expected) {
         // Arrange & Act
         boolean result = task5.isPalindromeDescendant(input);
         // Assert
@@ -32,7 +32,7 @@ public class Task5Test {
         "31213, true",
         "4123214, true"
     })
-    public void testInputWithModifying(long input, boolean expected) {
+    void testInputWithModifying(long input, boolean expected) {
         // Arrange & act
         boolean result = task5.isPalindromeDescendant(input);
         // Assert

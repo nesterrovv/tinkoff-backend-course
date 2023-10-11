@@ -15,7 +15,7 @@ public class Task7Test {
     @ParameterizedTest
     @MethodSource("rotateLeftTestData")
     @DisplayName("Rotate left test")
-    public void testRotateLeft(int input, int rotations, int expected) {
+    void testRotateLeft(int input, int rotations, int expected) {
         // Action
         int result = task7.rotateLeft(input, rotations);
         // Assert

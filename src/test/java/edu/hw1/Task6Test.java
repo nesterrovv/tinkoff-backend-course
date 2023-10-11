@@ -17,7 +17,7 @@ public class Task6Test {
         "6174, 0",
         "3524, 3"
     })
-    public void testInputWithoutModifying(int input, int expected) {
+    void testInputWithoutModifying(int input, int expected) {
         // Arrange & Act
         int result = task6.countK(input);
         // Assert
@@ -30,7 +30,7 @@ public class Task6Test {
         "2222, -1",
         "6666, -1"
     })
-    public void testFourEqualDigitsNumberTest(int input, int expected) {
+    void testFourEqualDigitsNumberTest(int input, int expected) {
         // Arrange & Act
         int result = task6.countK(input);
         // Assert
@@ -42,7 +42,7 @@ public class Task6Test {
         "1000, 5",
         "9998, 5"
     })
-    public void testInputWithZeroSavingNecessity(int input, int expected) {
+    void testInputWithZeroSavingNecessity(int input, int expected) {
         // Arrange & Act
         int result = task6.countK(input);
         // Assert
@@ -55,7 +55,7 @@ public class Task6Test {
         "10000, -1",
         "100, -1"
     })
-    public void testIncorrectInput(int input, int expected) {
+    void testIncorrectInput(int input, int expected) {
         // Arrange & Act
         int result = task6.countK(input);
         // Assert

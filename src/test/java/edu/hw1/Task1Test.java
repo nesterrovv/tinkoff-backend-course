@@ -13,7 +13,7 @@ public class Task1Test {
         "13:56, 836",
         "14:59, 899"
     })
-    public void testBaseInput(String input, long expected) {
+    void testBaseInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -28,7 +28,7 @@ public class Task1Test {
         "01:00, 60",
         "00:00, 0"
     })
-    public void testInputWithZeroes(String input, long expected) {
+    void testInputWithZeroes(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -39,7 +39,7 @@ public class Task1Test {
     @CsvSource({
         "3000000000:01, 180000000001"
     })
-    public void testBigNumberInput(String input, long expected) {
+    void testBigNumberInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -54,7 +54,7 @@ public class Task1Test {
         "10:-30, -1",
         "-10:-30, -1"
     })
-    public void testIncorrectNumberInput(String input, long expected) {
+    void testIncorrectNumberInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -68,7 +68,7 @@ public class Task1Test {
         "abc:abc, -1",
         ", -1"
     })
-    public void testIncorrectInput(String input, long expected) {
+    void testIncorrectInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -79,7 +79,7 @@ public class Task1Test {
     @CsvSource({
         ", -1"
     })
-    public void testEmptyInput(String input, long expected) {
+    void testEmptyInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert
@@ -90,7 +90,7 @@ public class Task1Test {
     @CsvSource({
         "null, -1"
     })
-    public void testNullInput(String input, long expected) {
+    void testNullInput(String input, long expected) {
         // Arrange & Act
         long result = task1.minutesToSeconds(input);
         // Assert

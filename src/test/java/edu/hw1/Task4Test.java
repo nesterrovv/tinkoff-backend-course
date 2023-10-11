@@ -11,7 +11,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Even-length inputs test")
-    public void testEvenLengthStringInput() {
+    void testEvenLengthStringInput() {
         // Arrange
         String input = "123456";
         String expected = "214365";
@@ -23,7 +23,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Even-length inputs with spaces test")
-    public void testEvenLengthStringInputWithSpaces() {
+    void testEvenLengthStringInputWithSpaces() {
         // Arrange
         String input = "2 4163 5";
         String expected = " 214365 ";
@@ -35,7 +35,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Mixed up string test")
-    public void testMixedUpString() {
+    void testMixedUpString() {
         // Arrange
         String input = "hTsii  s aimex dpus rtni.g";
         String expected = "This is a mixed up string.";
@@ -47,7 +47,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Odd-length inputs test")
-    public void testOddLengthStringInput() {
+    void testOddLengthStringInput() {
         // Arrange
         String input = "badce";
         String expected = "abcde";
@@ -59,7 +59,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Odd-length inputs with spaces test")
-    public void testOddLengthStringInputWithSpaces() {
+    void testOddLengthStringInputWithSpaces() {
         // Arrange
         String input = "a cbed ";
         String expected = " abcde ";
@@ -71,7 +71,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Reversed input test")
-    public void testReversedStringInput() {
+    void testReversedStringInput() {
         // Arrange
         String input = "wqreyti";
         String expected = "qwertyi";
@@ -83,7 +83,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Empty input test")
-    public void testEmptyInput() {
+    void testEmptyInput() {
         // Arrange
         String input = "";
         String expected = "";
@@ -95,7 +95,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Space input test")
-    public void testSpaceInput() {
+    void testSpaceInput() {
         // Arrange
         String input = " ";
         String expected = " ";
@@ -107,7 +107,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Double space input test")
-    public void testDoubleSpaceInput() {
+    void testDoubleSpaceInput() {
         // Arrange
         String input = "  ";
         String expected = "  ";
@@ -119,7 +119,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Null input test")
-    public void testNullInput() {
+    void testNullInput() {
         // Arrange
         String input = null;
         String expected = "";

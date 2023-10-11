@@ -12,7 +12,7 @@ public class Task2Test {
         "1111, 4",
         "9000, 4"
     })
-    public void testBaseInput(long input, int expected) {
+    void testBaseInput(long input, int expected) {
         // Arrange & Act
         int result = Task2.countNumberOfDigits(input);
         // Assert
@@ -25,7 +25,7 @@ public class Task2Test {
         "-1111, 4",
         "-9000, 4"
     })
-    public void testNegativeNumberInput(long input, int expected) {
+    void testNegativeNumberInput(long input, int expected) {
         // Arrange & Act
         int result = Task2.countNumberOfDigits(input);
         // Assert
@@ -37,7 +37,7 @@ public class Task2Test {
         "0, 1",
         "0000, 1"
     })
-    public void testZeroInput(long input, int expected) {
+    void testZeroInput(long input, int expected) {
         // Arrange & Act
         int result = Task2.countNumberOfDigits(input);
         // Assert
@@ -49,7 +49,7 @@ public class Task2Test {
         "9999999999, 10",
         "9999999990, 10"
     })
-    public void testBigNumberInput(long input, int expected) {
+    void testBigNumberInput(long input, int expected) {
         // Arrange & Act
         int result = Task2.countNumberOfDigits(input);
         // Assert
