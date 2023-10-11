@@ -63,15 +63,7 @@ public class Task7 {
     }
 
     private int toDecimalNumberSystem(String binary) {
-        StringBuilder binaryNumber = new StringBuilder(binary);
-        binaryNumber.reverse();
-        int result = 0;
-        int currentPowOfTwo = 0;
-        for (int i = 0; i < binaryNumber.length(); i++) {
-            result += Integer.parseInt(String.valueOf(binaryNumber.charAt(i))) * Math.pow(2, currentPowOfTwo);
-            currentPowOfTwo += 1;
-        }
-        return result;
+        return Integer.parseInt(binary, 2);
     }
 
     private String leftShift(String binaryNumber) {
