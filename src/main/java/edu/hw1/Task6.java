@@ -3,6 +3,8 @@ package edu.hw1;
 import edu.exceptions.IncorrectArgumentException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class Task6 {
@@ -17,6 +19,9 @@ public class Task6 {
         try {
             if (n < MINIMAL_FOUR_DIGIT_NUMBER || n > MAXIMAL_FOUR_DIGIT_NUMBER) {
                 throw new IncorrectArgumentException("Number should be from [1000; 9998]");
+            }
+            if (isFourEqualDigits(n)) {
+                throw new IncorrectArgumentException("Value cannot consist 4 equal digits");
             }
             int number = n;
             int counter = 0;
@@ -52,6 +57,15 @@ public class Task6 {
         }
         int second = Integer.parseInt(sortedNumberStr2.toString());
         return second - first;
+    }
+
+    private boolean isFourEqualDigits(int number) {
+        String stringNumber = String.valueOf(number);
+        Set<Character> digits = new HashSet<>();
+        for (char s : stringNumber.toCharArray()) {
+            digits.add(s);
+        }
+        return digits.size() == 1;
     }
 
 }

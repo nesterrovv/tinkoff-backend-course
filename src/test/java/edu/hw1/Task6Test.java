@@ -19,6 +19,14 @@ public class Task6Test {
     }
 
     @Test
+    @DisplayName("Test number with 4 equal digits")
+    public void testFourEqualDigitsNumberTest() {
+        Assertions.assertEquals(-1, task6.countK(1111));
+        Assertions.assertEquals(-1, task6.countK(2222));
+        Assertions.assertEquals(-1, task6.countK(6666));
+    }
+
+    @Test
     @DisplayName("Zero saving necessity input test")
     public void testInputWithZeroSavingNecessity() {
         Assertions.assertEquals(5, task6.countK(1000));
