@@ -15,6 +15,14 @@ public class Task2Test {
     }
 
     @Test
+    @DisplayName("Test negative numbers input test")
+    public void testNegativeNumberInput() {
+        Assertions.assertEquals(4, Task2.countNumberOfDigits(-1234L));
+        Assertions.assertEquals(4, Task2.countNumberOfDigits(-1111L));
+        Assertions.assertEquals(4, Task2.countNumberOfDigits(-9000L));
+    }
+
+    @Test
     @DisplayName("Zeroes input test")
     public void testZeroInput() {
         Assertions.assertEquals(1, Task2.countNumberOfDigits(0L));
