@@ -4,8 +4,6 @@ import java.util.logging.Logger;
 
 public class Task1 {
 
-//    public static void main(String[] args) {}
-
     private final static Logger LOGGER = Logger.getLogger("LOGGER");
 
     private final static Long SECONDS_IN_MINUTE = 60L;
