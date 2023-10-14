@@ -55,4 +55,8 @@ public final class RandomWordGenerator {
         }
     }
 
+    public Set<String> getNouns() {
+        return nouns;
+    }
+
 }
