@@ -54,9 +54,7 @@ public final class GraphicalProcessor {
                 System.out.println(" |   / \\");
                 System.out.println("_|_______|=|");
             }
-            default -> {
-                System.out.println("Incorrect stage");
-            }
+            default -> System.out.println("Incorrect stage");
         }
     }
 

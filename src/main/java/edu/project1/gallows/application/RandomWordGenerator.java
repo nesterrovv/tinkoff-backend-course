@@ -15,7 +15,7 @@ public final class RandomWordGenerator {
     private static final Logger LOGGER = LogManager.getLogger();
     private static RandomWordGenerator instance;
     private static final String PATH_TO_WORDS = "/project1/words.csv";
-    private Set<String> nouns = new HashSet<>();
+    private final Set<String> nouns = new HashSet<>();
 
     private RandomWordGenerator() {
         loadNounsFromResource();
@@ -42,11 +42,13 @@ public final class RandomWordGenerator {
     }
 
     private void loadNounsFromResource() {
-        try (InputStream inputStream = getClass().getResourceAsStream(PATH_TO_WORDS);
-             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                nouns.add(line.trim());
+        try (InputStream inputStream = getClass().getResourceAsStream(PATH_TO_WORDS)) {
+            assert inputStream != null;
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    nouns.add(line.trim());
+                }
             }
         } catch (IOException e) {
             LOGGER.error(e.getMessage());

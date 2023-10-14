@@ -6,10 +6,10 @@ import java.util.Set;
 public class GuessManager {
 
     private final String word;
-    private Set<Character> letters;
-    private StringBuilder currentWord;
+    private final Set<Character> letters;
+    private final StringBuilder currentWord;
     private int lettersOpened;
-    private Notepad notepad;
+    private final Notepad notepad;
 
 
     public GuessManager(String word) {
@@ -50,10 +50,6 @@ public class GuessManager {
 
     public boolean checkIfUserWin() {
         return this.lettersOpened == this.word.length();
-    }
-
-    public int getLettersOpened() {
-        return lettersOpened;
     }
 
     public Notepad getNotepad() {
