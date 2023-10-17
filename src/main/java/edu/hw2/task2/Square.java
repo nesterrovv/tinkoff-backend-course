@@ -1,6 +1,7 @@
 package edu.hw2.task2;
 
 public class Square implements GeometricShape {
+
     private int side;
 
     @Override
@@ -17,4 +18,5 @@ public class Square implements GeometricShape {
     public double area() {
         return side * side;
     }
+
 }
