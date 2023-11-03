@@ -7,12 +7,11 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public final class RandomWordGenerator {
 
-    private static final Logger LOGGER = LogManager.getLogger();
     private static final String PATH_TO_WORDS = "/project1/words.csv";
     private static RandomWordGenerator instance;
     private final Set<String> nouns = new HashSet<>();
@@ -51,7 +50,7 @@ public final class RandomWordGenerator {
                 }
             }
         } catch (IOException e) {
-            LOGGER.error(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
