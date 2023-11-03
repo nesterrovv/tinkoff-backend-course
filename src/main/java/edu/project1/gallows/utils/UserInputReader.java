@@ -29,7 +29,7 @@ public final class UserInputReader {
                 } else {
                     System.out.println("Input should be one letter. Try again.");
                 }
-            } catch (NoSuchElementException noSuchElementException) {
+            } catch (NoSuchElementException exception) {
                 System.out.println("Program will be finished now!");
                 System.exit(0);
             }
