@@ -22,7 +22,7 @@ public final class Main {
         GuessManager guessManager = createGuessManager();
         int mistakes = 0;
         while (true) {
-            displayGameState(guessManager, mistakes);
+            displayGameState(guessManager);
             Character letter = UserInputReader.receiveLetter();
             if (isNewLetter(guessManager, letter)) {
                 if (guessLetter(guessManager, letter)) {
@@ -60,7 +60,7 @@ public final class Main {
         return guessManager.guess(letter);
     }
 
-    private static void displayGameState(GuessManager guessManager, int mistakes) {
+    private static void displayGameState(GuessManager guessManager) {
         log.info("Guessed letters: " + guessManager.getNotepad().getCorrectLetters());
         log.info("Incorrect letters: " + guessManager.getNotepad().getIncorrectLetters());
         log.info(guessManager.getCurrentWord());
