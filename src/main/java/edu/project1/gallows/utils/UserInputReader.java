@@ -1,8 +1,10 @@
 package edu.project1.gallows.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+@Slf4j
 public final class UserInputReader {
 
     private static final Scanner SCANNER;
@@ -13,24 +15,24 @@ public final class UserInputReader {
 
     private UserInputReader() {}
 
-    @SuppressWarnings("RegexpSinglelineJava")
     public static Character receiveLetter() {
         while (true) {
             try {
-                System.out.println("Input letter:");
+                log.info("Input letter:");
                 String input = SCANNER.nextLine().toLowerCase();
                 if (input.length() == 1) {
                     char letter = input.charAt(0);
                     if (Character.isLetter(letter)) {
                         return letter;
                     } else {
-                        System.out.println("That's not letter. Try again.");
+                        log.info("That's not letter. Try again.");
                     }
                 } else {
-                    System.out.println("Input should be one letter. Try again.");
+                    log.info("Input should be one letter. Try again.");
                 }
             } catch (NoSuchElementException exception) {
-                System.out.println("Program will be finished now!");
+                // info level because it's the correct way of program finishing
+                log.info("Program will be finished now!");
                 System.exit(0);
             }
         }

@@ -1,5 +1,8 @@
 package edu.project1.gallows.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public final class GraphicalProcessor {
 
     private static final int FIRST_STAGE = 1;
@@ -11,50 +14,50 @@ public final class GraphicalProcessor {
     private GraphicalProcessor() {}
 
 
-    @SuppressWarnings({"MultipleStringLiterals", "RegexpSinglelineJava"})
+    @SuppressWarnings({"MultipleStringLiterals"})
     public static void drawGallows(int stage) {
         switch (stage) {
             case FIRST_STAGE -> {
-                System.out.println(" _____ ");
-                System.out.println(" |    |");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println("_|_____");
+                log.info(" _____ ");
+                log.info(" |    |");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info("_|_____");
             }
             case SECOND_STAGE -> {
-                System.out.println(" _____ ");
-                System.out.println(" |/   |");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println("_|_____");
+                log.info(" _____ ");
+                log.info(" |/   |");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info("_|_____");
             }
             case THIRD_STAGE -> {
-                System.out.println("  ____ ");
-                System.out.println(" |/   |");
-                System.out.println(" |    O");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println("_|_____");
+                log.info("  ____ ");
+                log.info(" |/   |");
+                log.info(" |    O");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info("_|_____");
             }
             case FOURTH_STAGE -> {
-                System.out.println("  ____ ");
-                System.out.println(" |/   |");
-                System.out.println(" |    O");
-                System.out.println(" |     ");
-                System.out.println(" |     ");
-                System.out.println("_|_______|=|");
+                log.info("  ____ ");
+                log.info(" |/   |");
+                log.info(" |    O");
+                log.info(" |     ");
+                log.info(" |     ");
+                log.info("_|_______|=|");
             }
             case FIFTH_STAGE -> {
-                System.out.println("  ____ ");
-                System.out.println(" |/   |");
-                System.out.println(" |    O");
-                System.out.println(" |   /|\\");
-                System.out.println(" |   / \\");
-                System.out.println("_|_______|=|");
+                log.info("  ____ ");
+                log.info(" |/   |");
+                log.info(" |    O");
+                log.info(" |   /|\\");
+                log.info(" |   / \\");
+                log.info("_|_______|=|");
             }
-            default -> System.out.println("Incorrect stage");
+            default -> log.info("Incorrect stage");
         }
     }
 

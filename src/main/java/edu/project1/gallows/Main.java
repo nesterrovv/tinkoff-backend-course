@@ -4,8 +4,9 @@ import edu.project1.gallows.application.GuessManager;
 import edu.project1.gallows.application.RandomWordGenerator;
 import edu.project1.gallows.utils.GraphicalProcessor;
 import edu.project1.gallows.utils.UserInputReader;
+import lombok.extern.slf4j.Slf4j;
 
-@SuppressWarnings("RegexpSinglelineJava")
+@Slf4j
 public final class Main {
 
     private static final int MAX_MISTAKE_NUMBERS = 5;
@@ -17,7 +18,7 @@ public final class Main {
     }
 
     public static void startGame() {
-        System.out.println("Welcome to the Gallows Game!");
+        log.info("Welcome to the Gallows Game!");
         GuessManager guessManager = createGuessManager();
         int mistakes = 0;
         while (true) {
@@ -25,9 +26,9 @@ public final class Main {
             Character letter = UserInputReader.receiveLetter();
             if (isNewLetter(guessManager, letter)) {
                 if (guessLetter(guessManager, letter)) {
-                    System.out.println("Correct guess!");
+                    log.info("Correct guess!");
                 } else {
-                    System.out.println("Incorrect guess!");
+                    log.info("Incorrect guess!");
                     mistakes++;
                     GraphicalProcessor.drawGallows(mistakes);
                     if (mistakes == MAX_MISTAKE_NUMBERS) {
@@ -36,7 +37,7 @@ public final class Main {
                     }
                 }
             } else {
-                System.out.println("You've already guessed that letter. Try another!");
+                log.warn("You've already guessed that letter. Try another!");
             }
             if (hasUserWon(guessManager)) {
                 celebrateWin();
@@ -46,7 +47,7 @@ public final class Main {
     }
 
     private static GuessManager createGuessManager() {
-        System.out.println("Game has been started! Type Ctrl+D (or Cmd+D for macOS) to exit.");
+        log.info("Game has been started! Type Ctrl+D (or Cmd+D for macOS) to exit.");
         String wordToGuess = RandomWordGenerator.getInstance().getRandomNoun();
         return new GuessManager(wordToGuess);
     }
@@ -60,15 +61,15 @@ public final class Main {
     }
 
     private static void displayGameState(GuessManager guessManager, int mistakes) {
-        System.out.println("Guessed letters: " + guessManager.getNotepad().getCorrectLetters());
-        System.out.println("Incorrect letters: " + guessManager.getNotepad().getIncorrectLetters());
-        System.out.println(guessManager.getCurrentWord());
+        log.info("Guessed letters: " + guessManager.getNotepad().getCorrectLetters());
+        log.info("Incorrect letters: " + guessManager.getNotepad().getIncorrectLetters());
+        log.info(guessManager.getCurrentWord());
     }
 
     private static void endGame(GuessManager guessManager) {
-        System.out.println("Game over! :(");
-        System.out.println("The word was: " + guessManager.getWord());
-        System.out.println("Would you like to play again?");
+        log.info("Game over! :(");
+        log.info("The word was: " + guessManager.getWord());
+        log.info("Would you like to play again?");
     }
 
     private static boolean hasUserWon(GuessManager guessManager) {
@@ -76,7 +77,7 @@ public final class Main {
     }
 
     private static void celebrateWin() {
-        System.out.println("You won! Congratulations!");
+        log.info("You won! Congratulations!");
     }
 
 }
