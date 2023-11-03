@@ -6,43 +6,62 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-public class NotepadTest {
+class NotepadTest {
 
     private Notepad notepad;
 
     @BeforeEach
     public void arrange() {
+        // Arrange
         notepad = new Notepad();
     }
 
     @Test
     public void shouldAddIncorrectLetter() {
-        notepad.addIncorrectLetter('a');
+        // Arrange
+        char letter = 'a';
+        // Act
+        notepad.addIncorrectLetter(letter);
+        // Assert
         Set<Character> incorrectLetters = notepad.getIncorrectLetters();
-        Assertions.assertThat(incorrectLetters).contains('a');
+        Assertions.assertThat(incorrectLetters).contains(letter);
     }
 
     @Test
     public void shouldAddCorrectLetter() {
-        notepad.addCorrectLetter('b');
+        // Arrange
+        char letter = 'b';
+        // Act
+        notepad.addCorrectLetter(letter);
+        // Assert
         Set<Character> correctLetters = notepad.getCorrectLetters();
-        Assertions.assertThat(correctLetters).contains('b');
+        Assertions.assertThat(correctLetters).contains(letter);
     }
 
     @Test
     public void shouldReturnCorrectLetters() {
-        notepad.addCorrectLetter('c');
-        notepad.addCorrectLetter('d');
+        // Arrange
+        char letter1 = 'c';
+        char letter2 = 'd';
+        // Act
+        notepad.addCorrectLetter(letter1);
+        notepad.addCorrectLetter(letter2);
+        // Assert
         Set<Character> correctLetters = notepad.getCorrectLetters();
-        Assertions.assertThat(correctLetters).containsExactly('c', 'd');
+        Assertions.assertThat(correctLetters).containsExactly(letter1, letter2);
     }
 
     @Test
     public void shouldReturnIncorrectLetters() {
-        notepad.addIncorrectLetter('x');
-        notepad.addIncorrectLetter('y');
+        // Arrange
+        char letter1 = 'x';
+        char letter2 = 'y';
+        // Act
+        notepad.addIncorrectLetter(letter1);
+        notepad.addIncorrectLetter(letter2);
+        // Assert
         Set<Character> incorrectLetters = notepad.getIncorrectLetters();
-        Assertions.assertThat(incorrectLetters).containsExactly('x', 'y');
+        Assertions.assertThat(incorrectLetters).containsExactly(letter1, letter2);
     }
 
 }

@@ -5,49 +5,67 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GuessManagerTest {
+class GuessManagerTest {
 
     private GuessManager guessManager;
 
     @BeforeEach
     public void arrange() {
+        // Arrange
         guessManager = new GuessManager("example");
     }
 
     @Test
     public void shouldReturnTrueAndUpdateCurrentWordWhenGuessingCorrectLetter() {
-        boolean result = guessManager.guess('e');
+        // Arrange
+        char letterToGuess = 'e';
+        // Act
+        boolean result = guessManager.guess(letterToGuess);
+        // Assert
         assertThat(result).isTrue();
         assertThat(guessManager.getCurrentWord()).isEqualTo("e_____e");
     }
 
     @Test
     public void shouldReturnFalseWhenGuessingIncorrectLetter() {
-        boolean result = guessManager.guess('q');
+        // Arrange
+        char letterToGuess = 'q';
+        // Act
+        boolean result = guessManager.guess(letterToGuess);
+        // Assert
         assertThat(result).isFalse();
     }
 
     @Test
     public void shouldReturnTrueForNewLetterAndFalseForAlreadyGuessedLetter() {
-        guessManager.guess('a'); // Добавляем букву 'a' в notepad
-        assertThat(guessManager.checkIsNewLetter('a')).isFalse(); // Буква уже угадана
-        assertThat(guessManager.checkIsNewLetter('b')).isTrue(); // Новая буква
+        // Arrange
+        char letterA = 'a';
+        char letterB = 'b';
+        // Act
+        guessManager.guess(letterA);
+        // Assert
+        assertThat(guessManager.checkIsNewLetter(letterA)).isFalse();
+        assertThat(guessManager.checkIsNewLetter(letterB)).isTrue();
     }
 
     @Test
     public void shouldReturnTrueWhenUserWins() {
-        guessManager.guess('e');
-        guessManager.guess('x');
-        guessManager.guess('a');
-        guessManager.guess('m');
-        guessManager.guess('p');
-        guessManager.guess('l');
+        // Arrange
+        char[] lettersToGuess = {'e', 'x', 'a', 'm', 'p', 'l'};
+        // Act
+        for (char letter : lettersToGuess) {
+            guessManager.guess(letter);
+        }
+        // Assert
         assertThat(guessManager.checkIfUserWin()).isTrue();
     }
 
     @Test
     public void shouldReturnCorrectWord() {
-        assertThat(guessManager.getWord()).isEqualTo("example");
+        // Act
+        String word = guessManager.getWord();
+        // Assert
+        assertThat(word).isEqualTo("example");
     }
 
 }

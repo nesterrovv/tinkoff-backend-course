@@ -8,27 +8,32 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class UserInputReaderTest {
+class UserInputReaderTest {
 
     private ByteArrayOutputStream outputStream;
 
     @BeforeEach
-    public void setUp() {
+    public void arrange() {
+        // Arrange
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
     }
 
     @AfterEach
-    public void tearDown() {
+    public void cleanup() {
+        // Cleanup
         System.setIn(System.in);
         System.setOut(System.out);
     }
 
     @Test
     public void shouldRejectInvalidCharacter() {
+        // Arrange
         String input = "1\nx\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        // Act
         char result = UserInputReader.receiveLetter();
+        // Assert
         Assertions.assertThat(result).isEqualTo('x');
         String expectedOutput = """
         Input letter:
