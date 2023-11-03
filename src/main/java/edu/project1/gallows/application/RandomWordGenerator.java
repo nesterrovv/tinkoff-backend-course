@@ -13,8 +13,8 @@ import org.apache.logging.log4j.Logger;
 public final class RandomWordGenerator {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static RandomWordGenerator instance;
     private static final String PATH_TO_WORDS = "/project1/words.csv";
+    private static RandomWordGenerator instance;
     private final Set<String> nouns = new HashSet<>();
 
     private RandomWordGenerator() {

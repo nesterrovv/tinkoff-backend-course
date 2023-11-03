@@ -8,8 +8,8 @@ public class GuessManager {
     private final String word;
     private final Set<Character> letters;
     private final StringBuilder currentWord;
-    private int lettersOpened;
     private final Notepad notepad;
+    private int lettersOpened;
 
 
     public GuessManager(String word) {
