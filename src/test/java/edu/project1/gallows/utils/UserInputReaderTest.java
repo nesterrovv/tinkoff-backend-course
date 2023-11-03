@@ -40,7 +40,10 @@ class UserInputReaderTest {
         That's not letter. Try again.
         Input letter:
         """;
-        Assertions.assertThat(outputStream.toString().replace("\r\n", "\n"))
+        Assertions.assertThat(outputStream
+                .toString()
+                .replaceAll("\\d{2}:\\d{2}:\\d{2}\\.\\d{3} \\[.*\\] INFO .* - ", "")
+                .replace("\r\n", "\n"))
             .isEqualTo(expectedOutput.replace("\r\n", "\n"));
     }
 

@@ -1,8 +1,8 @@
 package edu.project1.gallows.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public final class UserInputReader {
