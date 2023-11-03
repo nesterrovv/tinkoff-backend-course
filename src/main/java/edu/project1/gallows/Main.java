@@ -5,6 +5,7 @@ import edu.project1.gallows.application.RandomWordGenerator;
 import edu.project1.gallows.utils.GraphicalProcessor;
 import edu.project1.gallows.utils.UserInputReader;
 
+@SuppressWarnings("RegexpSinglelineJava")
 public final class Main {
 
     private static final int MAX_MISTAKE_NUMBERS = 5;
@@ -12,40 +13,70 @@ public final class Main {
     private Main() {}
 
     public static void main(String[] args) {
-        play();
+        startGame();
     }
 
-    @SuppressWarnings("RegexpSinglelineJava")
-    public static void play() {
-        System.out.println("Game has been started! Type ctrl + D (or cmd + D for macOS) for exit.");
-        GuessManager guessManager = new GuessManager(RandomWordGenerator.getInstance().getRandomNoun());
+    public static void startGame() {
+        System.out.println("Welcome to the Gallows Game!");
+        GuessManager guessManager = createGuessManager();
         int mistakes = 0;
         while (true) {
-            System.out.println("Guessed letters: " + guessManager.getNotepad().getCorrectLetters());
-            System.out.println("Incorrect letters: " + guessManager.getNotepad().getIncorrectLetters());
-            System.out.println(guessManager.getCurrentWord());
+            displayGameState(guessManager, mistakes);
             Character letter = UserInputReader.receiveLetter();
-            if (guessManager.checkIsNewLetter(letter)) {
-                if (guessManager.guess(letter)) {
-                    System.out.println("This is correct letter!");
+            if (isNewLetter(guessManager, letter)) {
+                if (guessLetter(guessManager, letter)) {
+                    System.out.println("Correct guess!");
                 } else {
-                    System.out.println("This is incorrect letter!");
+                    System.out.println("Incorrect guess!");
                     mistakes++;
                     GraphicalProcessor.drawGallows(mistakes);
                     if (mistakes == MAX_MISTAKE_NUMBERS) {
-                        System.out.println("Game over! :(");
-                        System.out.println("The word was: " + guessManager.getWord());
-                        System.out.println("Let's play again?");
+                        endGame(guessManager);
                         break;
                     }
                 }
             } else {
-                System.out.println("This letter has been already entered. Try another!");
+                System.out.println("You've already guessed that letter. Try another!");
             }
-            if (guessManager.checkIfUserWin()) {
-                System.out.println("You won! Congratulations!");
+            if (hasUserWon(guessManager)) {
+                celebrateWin();
                 break;
             }
         }
     }
+
+    private static GuessManager createGuessManager() {
+        System.out.println("Game has been started! Type Ctrl+D (or Cmd+D for macOS) to exit.");
+        String wordToGuess = RandomWordGenerator.getInstance().getRandomNoun();
+        return new GuessManager(wordToGuess);
+    }
+
+    private static boolean isNewLetter(GuessManager guessManager, Character letter) {
+        return guessManager.checkIsNewLetter(letter);
+    }
+
+    private static boolean guessLetter(GuessManager guessManager, Character letter) {
+        return guessManager.guess(letter);
+    }
+
+    private static void displayGameState(GuessManager guessManager, int mistakes) {
+        System.out.println("Guessed letters: " + guessManager.getNotepad().getCorrectLetters());
+        System.out.println("Incorrect letters: " + guessManager.getNotepad().getIncorrectLetters());
+        System.out.println(guessManager.getCurrentWord());
+    }
+
+    private static void endGame(GuessManager guessManager) {
+        System.out.println("Game over! :(");
+        System.out.println("The word was: " + guessManager.getWord());
+        System.out.println("Would you like to play again?");
+    }
+
+    private static boolean hasUserWon(GuessManager guessManager) {
+        return guessManager.checkIfUserWin();
+    }
+
+    private static void celebrateWin() {
+        System.out.println("You won! Congratulations!");
+    }
+
 }
