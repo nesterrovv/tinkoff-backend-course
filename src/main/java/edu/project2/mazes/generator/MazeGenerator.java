@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class MazeGenerator implements Generator {
     private final int[] xCoefficients = {-1, 1, 0, 0};
     private final int[] yCoefficients = {0, 0, -1, 1};
@@ -73,9 +74,9 @@ public class MazeGenerator implements Generator {
             for (int dir : directions) {
                 int newRow = wallRow + 2 * xCoefficients[dir];
                 int newCol = wallCol + 2 * yCoefficients[dir];
-                if (newRow >= 0 && newRow < row &&
-                    newCol >= 0 && newCol < column &&
-                    cells[newRow][newCol].type() == Type.WALL) {
+                if (newRow >= 0 && newRow < row
+                    && newCol >= 0 && newCol < column
+                    && cells[newRow][newCol].type() == Type.WALL) {
                     cells[newRow][newCol] = new Cell(new Coordinate(newRow, newCol), Type.DOOR);
                     cells[wallRow + xCoefficients[dir]][wallCol + yCoefficients[dir]] =
                         new Cell(new Coordinate(
@@ -92,8 +93,8 @@ public class MazeGenerator implements Generator {
         do {
             int exitRow = random.nextInt(row);
             int exitCol = random.nextInt(column);
-            if (exitRow != startCell.coordinate().row() && exitCol != startCell.coordinate().col() &&
-                cells[exitRow][exitCol].type() == Type.DOOR) {
+            if (exitRow != startCell.coordinate().row() && exitCol != startCell.coordinate().col()
+                && cells[exitRow][exitCol].type() == Type.DOOR) {
                 Coordinate coordinate = new Coordinate(exitRow, exitCol);
                 cells[coordinate.row()][coordinate.col()] = new Cell(coordinate, Type.END);
                 break;
