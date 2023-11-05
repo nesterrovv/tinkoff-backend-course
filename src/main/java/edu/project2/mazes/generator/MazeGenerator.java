@@ -4,7 +4,6 @@ import edu.project2.mazes.maze.Cell;
 import edu.project2.mazes.maze.Coordinate;
 import edu.project2.mazes.maze.Maze;
 import edu.project2.mazes.maze.Type;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

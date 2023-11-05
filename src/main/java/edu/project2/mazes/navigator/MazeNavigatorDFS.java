@@ -1,6 +1,5 @@
 package edu.project2.mazes.navigator;
 
-
 import edu.project2.mazes.maze.Cell;
 import edu.project2.mazes.maze.Coordinate;
 import edu.project2.mazes.maze.Maze;
