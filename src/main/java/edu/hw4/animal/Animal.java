@@ -1,7 +1,5 @@
 package edu.hw4.animal;
 
-
-
 @SuppressWarnings({"MagicNumber"})
 public record Animal(
 

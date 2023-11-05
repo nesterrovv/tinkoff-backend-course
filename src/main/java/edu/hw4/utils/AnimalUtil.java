@@ -26,7 +26,7 @@ public final class AnimalUtil {
             .toList();
     }
 
-    static Map<Animal.Type, Long> getNumberOfAnimalsByType(List<Animal> animals) {
+    public static Map<Animal.Type, Long> getNumberOfAnimalsByType(List<Animal> animals) {
         return animals.stream()
             .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
     }
@@ -44,25 +44,20 @@ public final class AnimalUtil {
      * @return The most common sex (Sex.M or Sex.F),
      *     or null if the number of males and females is equal.
      */
-    static Animal.Sex getMostCommonSex(List<Animal> animals) {
+    public static Animal.Sex getMostCommonSex(List<Animal> animals) {
         Map<Animal.Sex, Long> sexCountMap = animals.stream()
             .collect(Collectors.groupingBy(
                 Animal::sex,
                 Collectors.counting()));
-
         long maleCount   = sexCountMap.getOrDefault(Animal.Sex.M, 0L);
         long femaleCount = sexCountMap.getOrDefault(Animal.Sex.F, 0L);
-
         if (maleCount == femaleCount) {
             return null;
         }
-
-        return maleCount > femaleCount
-            ? Animal.Sex.M
-            : Animal.Sex.F;
+        return maleCount > femaleCount ? Animal.Sex.M : Animal.Sex.F;
     }
 
-    static Map<Animal.Type, Animal> getHeaviestAnimalPerType(List<Animal> animals) {
+    public static Map<Animal.Type, Animal> getHeaviestAnimalPerType(List<Animal> animals) {
         return animals.stream()
             .collect(Collectors.groupingBy(
                 Animal::type,
@@ -81,7 +76,6 @@ public final class AnimalUtil {
         List<Animal> sortedAnimals = animals.stream()
             .sorted(Comparator.comparingInt(Animal::age).reversed())
             .toList();
-
         return sortedAnimals.get(k - 1); // Вернуть K-ое самое старое животное
     }
 
@@ -131,7 +125,7 @@ public final class AnimalUtil {
             .anyMatch(animal -> animal.type() == Animal.Type.DOG && animal.height() > k);
     }
 
-    static Map<Animal.Type, Integer> getSumWeightByTypeInAgeRange(List<Animal> animals, int k, int l) {
+    public static Map<Animal.Type, Integer> getSumWeightByTypeInAgeRange(List<Animal> animals, int k, int l) {
         return animals.stream()
             .filter(animal -> k <= animal.age() && animal.age() <= l)
             .collect(Collectors.groupingBy(
@@ -178,7 +172,6 @@ public final class AnimalUtil {
 
     public static Map<String, String> getValidationErrorMessages(List<Animal> animals) {
         Map<String, List<ValidationError>> errors = getValidationErrors(animals);
-
         return errors.entrySet().stream()
             .collect(Collectors.toMap(
                 Map.Entry::getKey,
