@@ -1,44 +1,29 @@
 package edu.hw2.task2;
 
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task2Test {
 
-    @Test
-    void testRectangleArea() {
-        GeometricShape rectangle = new Rectangle();
-        rectangle.setWidth(5);
-        rectangle.setHeight(3);
-        assertThat(rectangle.area()).isEqualTo(15.0);
+    private static Arguments[] getShapes() {
+        return new Arguments[] {
+            Arguments.of(new Rectangle()),
+            Arguments.of(new Square())
+        };
     }
 
-    @Test
-    void testSquareArea() {
-        GeometricShape square = new Square();
-        square.setWidth(4);
-        square.setHeight(4);
-        assertThat(square.area()).isEqualTo(16.0);
-    }
+    @ParameterizedTest
+    @MethodSource("getShapes")
+    @DisplayName("Test rectangle area calculation")
+    public void testRectangleArea(Rectangle rectangle) {
+        Rectangle result = rectangle
+            .createWithWidth(20.0)
+            .createWithHeight(10.0);
 
-    @Test
-    void testSquareAreaWithTryingSetDiffSides() {
-        GeometricShape square = new Square();
-        square.setWidth(4);
-        square.setHeight(5);
-        assertThat(square.area()).isEqualTo(25.0);
-    }
-
-    @Test
-    void testBothShapes() {
-        GeometricShape rectangle = new Rectangle();
-        GeometricShape square = new Square();
-        rectangle.setWidth(5);
-        rectangle.setHeight(3);
-        square.setWidth(4);
-        square.setHeight(4);
-        assertThat(rectangle.area()).isEqualTo(15.0);
-        assertThat(square.area()).isEqualTo(16.0);
+        assertThat(result.area()).isEqualTo(200.0);
     }
 
 }

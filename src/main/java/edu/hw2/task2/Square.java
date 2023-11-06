@@ -1,22 +1,15 @@
 package edu.hw2.task2;
 
-public class Square implements GeometricShape {
+public class Square extends Rectangle {
 
-    private int side;
+    public Square() {}
 
-    @Override
-    public void setWidth(int width) {
-        this.side = width;
+    public Square(double size) {
+        super(size, size);
     }
 
-    @Override
-    public void setHeight(int height) {
-        this.side = height;
-    }
-
-    @Override
-    public double area() {
-        return side * side;
+    public final Square createWithSize(double size) {
+        return new Square(size);
     }
 
 }
