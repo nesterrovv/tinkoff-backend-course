@@ -1,4 +1,4 @@
-package edu.project1.gallows.util;
+package edu.project1.gallows.utils;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
@@ -10,8 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 
-public class SerializerToCSV {
+@Slf4j
+public final class SerializerToCSV {
 
     private static final String PATH_TO_USERS_FILE = "src/main/resources/project1/users.csv";
 
@@ -27,10 +29,11 @@ public class SerializerToCSV {
                 writer.writeNext(userData);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
+    @SuppressWarnings("MagicNumber")
     public static Set<User> deserializeUsersFromCSV() {
         Set<User> users = AccountManager.getUsers();
         try (CSVReader reader = new CSVReader(new FileReader(PATH_TO_USERS_FILE))) {
@@ -46,7 +49,7 @@ public class SerializerToCSV {
                 }
             }
         } catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if (users == null) {
             return new HashSet<>();

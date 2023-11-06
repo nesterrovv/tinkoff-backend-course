@@ -67,8 +67,12 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
         return Objects.equals(login, user.login) && Objects.equals(password, user.password);
     }
@@ -80,12 +84,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-            "login='" + login + '\'' +
-            ", password='" + password + '\'' +
-            ", wins=" + wins +
-            ", loses=" + loses +
-            '}';
+        return "User{"
+            + "login='" + login + '\''
+            + ", password='" + password + '\''
+            + ", wins=" + wins
+            + ", loses=" + loses
+            + '}';
     }
 
 }

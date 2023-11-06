@@ -1,35 +1,31 @@
 package edu.project1.gallows.application;
 
 import edu.project1.gallows.model.User;
-import edu.project1.gallows.util.SerializerToCSV;
-import lombok.extern.slf4j.Slf4j;
+import edu.project1.gallows.utils.SerializerToCSV;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AccountManager {
+public final class AccountManager {
 
     private static AccountManager instance;
     private static User currentUser;
     private static Set<User> users = new HashSet<>();
 
-    private AccountManager() {
-        instance = new AccountManager();
-        users = SerializerToCSV.deserializeUsersFromCSV();
-    }
+   static {
+       users = SerializerToCSV.deserializeUsersFromCSV();
+   }
 
-    public AccountManager getInstance() {
-        if (instance == null) {
-            instance = new AccountManager();
-        }
-        return instance;
-    }
+   private AccountManager() {}
 
-    public static void login(User user) {
-        boolean isCorrectAccount = users.contains(user);
-        if (isCorrectAccount) {
-            currentUser = user;
+    public static void login(String login, String hexPassword) {
+        User current = getUserViaCredentials(login, hexPassword);
+        if (current == null) {
+            register(new User(login, hexPassword));
+            login(login, hexPassword);
+        } else {
+            currentUser = current;
         }
     }
 
@@ -47,8 +43,13 @@ public class AccountManager {
         }
     }
 
-    public static boolean checkIfUserExists(User user) {
-        return users.contains(user);
+    public static User getUserViaCredentials(String login, String hexPassword) {
+        for (User user : users) {
+            if (user.getLogin().equals(login) && user.getPassword().equals(hexPassword)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     public static User getCurrentUser() {

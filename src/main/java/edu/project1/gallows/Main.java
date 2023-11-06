@@ -3,10 +3,9 @@ package edu.project1.gallows;
 import edu.project1.gallows.application.AccountManager;
 import edu.project1.gallows.application.GuessManager;
 import edu.project1.gallows.application.RandomWordGenerator;
-import edu.project1.gallows.model.User;
 import edu.project1.gallows.security.Cryptographer;
-import edu.project1.gallows.util.SerializerToCSV;
 import edu.project1.gallows.utils.GraphicalProcessor;
+import edu.project1.gallows.utils.SerializerToCSV;
 import edu.project1.gallows.utils.UserInputReader;
 import lombok.extern.slf4j.Slf4j;
 
@@ -95,20 +94,8 @@ public final class Main {
     }
 
     private static void authorize(String login, String password) {
-        User user = new User(login, Cryptographer.encrypt(password));
-        if (AccountManager.checkIfUserExists(user)) {
-            int wins = user.getWins();
-            int loses = user.getLoses();
-            AccountManager.login(user);
-        } else {
-            AccountManager.register(user);
-            AccountManager.login(user);
-        }
-        log.info("Welcome to the Gallows Game!");
-        log.info("Your statistics:");
-        log.info("Name: " + AccountManager.getCurrentUser().getLogin());
-        log.info("Wins: " + AccountManager.getCurrentUser().getWins());
-        log.info("Loses: " + AccountManager.getCurrentUser().getLoses());
+        String hexPassword = Cryptographer.encrypt(password);
+        AccountManager.login(login, hexPassword);
     }
 
     private static void sayHello() {
