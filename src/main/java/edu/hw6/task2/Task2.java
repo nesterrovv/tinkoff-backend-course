@@ -5,7 +5,9 @@ import java.nio.file.Paths;
 import static edu.hw6.FilesUtils.cloneFile;
 import static edu.hw6.FilesUtils.createFile;
 
+@SuppressWarnings("UncommentedMain")
 public final class Task2 {
+
     private Task2() {}
 
     private final static String TOP_SECRET_DIRECTORY = "src/main/java/edu/hw6/task2";
