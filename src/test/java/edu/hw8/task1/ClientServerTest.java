@@ -12,8 +12,6 @@ import java.io.PipedOutputStream;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import static edu.hw6.FilesUtils.clearFile;
-import static edu.hw6.FilesUtils.getFirstLineFromFile;
 import static java.lang.Thread.sleep;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -116,7 +114,31 @@ class ClientServerTest {
                 }
             }
         }
-
         return false;
     }
+
+    private static String getFirstLineFromFile(Path filePath) {
+        try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+            return reader.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void clearFile(Path filePath) {
+        if (!Files.exists(filePath)) {
+            return;
+        }
+        try {
+            Files.delete(filePath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Files.createFile(filePath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

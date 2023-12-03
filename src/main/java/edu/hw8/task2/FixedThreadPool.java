@@ -3,7 +3,7 @@ package edu.hw8.task2;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class FixedThreadPool implements ThreadPool {
+public final class FixedThreadPool implements ThreadPool {
 
     private final int threadsNumber;
     private final Thread[] threads;
@@ -67,9 +67,11 @@ public class FixedThreadPool implements ThreadPool {
                 }
             }
         }
+
         private boolean shouldContinue() {
             return !Thread.currentThread().isInterrupted();
         }
+
     }
 
 }
