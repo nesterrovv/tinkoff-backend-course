@@ -46,7 +46,6 @@ public class RandomObjectGenerator {
             .filter(method -> method.getName().equals(creationMethodName))
             .findFirst()
             .orElseThrow();
-
         createMethod.setAccessible(true);
         return (T) createMethod.invoke(null, getArgs(createMethod));
     }
