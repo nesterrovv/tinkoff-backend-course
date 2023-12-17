@@ -8,8 +8,8 @@ import net.bytebuddy.jar.asm.Label;
 import org.objectweb.asm.Opcodes;
 
 public class Task3 {
-    private Task3() {
-    }
+
+    private Task3() {}
 
     public static Class<?> createCustomClassWithImplementedMethod(String className, String methodName) {
         return new ByteBuddy()
@@ -74,4 +74,5 @@ public class Task3 {
             return new ByteCodeAppender.Size(4, 9);
         };
     }
+
 }

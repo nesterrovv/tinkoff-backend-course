@@ -8,7 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Task2Test {
+class Task2Test {
+
     @Test
     @DisplayName("Изменение поведения метода класса")
     void runtimeMethodDelegating()

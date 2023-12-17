@@ -9,6 +9,7 @@ import static net.bytebuddy.matcher.ElementMatchers.named;
 import static net.bytebuddy.matcher.ElementMatchers.returns;
 
 public class Task2 {
+
     private Task2() {
     }
 

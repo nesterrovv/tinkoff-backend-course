@@ -6,7 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Task1Test {
+class Task1Test {
+
     @Test
     @DisplayName("Создание класса с переопределенным методом toString()")
     void runtimeToStringImplementation()
@@ -18,4 +19,5 @@ public class Task1Test {
             Task1.createClassWithCustomToStringImplementation(customToStringReturnValue).toString()
         );
     }
+
 }

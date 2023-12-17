@@ -10,7 +10,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Task3Test {
+class Task3Test {
+
     private static final String CUSTOM_CLASS_NAME = "FubCalculator";
     private static final String CUSTOM_METHOD_NAME = "fib";
 
@@ -51,4 +52,5 @@ public class Task3Test {
             customType.getMethod(CUSTOM_METHOD_NAME, int.class).invoke(customInstance, input)
         );
     }
+
 }

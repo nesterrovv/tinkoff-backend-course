@@ -7,6 +7,7 @@ import net.bytebuddy.implementation.FixedValue;
 import net.bytebuddy.matcher.ElementMatchers;
 
 public class Task1 {
+
     private Task1() {
     }
 
@@ -17,10 +18,9 @@ public class Task1 {
             .method(ElementMatchers.isToString())
             .intercept(FixedValue.value(toStringReturnValue))
             .make();
-
         Class<?> dynamicType = unloadedType.load(Task1.class.getClassLoader())
             .getLoaded();
-
         return dynamicType.getDeclaredConstructor().newInstance();
     }
+
 }
