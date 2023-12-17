@@ -23,6 +23,7 @@ import org.openjdk.jmh.runner.options.TimeValue;
 
 @State(Scope.Thread)
 public class ReflectionBenchmark {
+
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
             .include(ReflectionBenchmark.class.getSimpleName())
@@ -37,7 +38,6 @@ public class ReflectionBenchmark {
             .measurementIterations(1)
             .measurementTime(TimeValue.seconds(5))
             .build();
-
         new Runner(options).run();
     }
 
@@ -48,12 +48,10 @@ public class ReflectionBenchmark {
 
     @Setup
     public void setup() throws Throwable {
-        student = new Student("Alexander", "Biryukov");
+        student = new Student("Ivan", "Nesterov");
         method = Student.class.getMethod("name");
-
         final MethodHandles.Lookup lookup = MethodHandles.lookup();
         methodHandle = lookup.findVirtual(Student.class, "name", MethodType.methodType(String.class));
-
         CallSite callSite = LambdaMetafactory.metafactory(
             lookup,
             "apply",
@@ -62,7 +60,6 @@ public class ReflectionBenchmark {
             methodHandle,
             MethodType.methodType(String.class, Student.class)
         );
-
         function = (Function) callSite.getTarget().invokeExact();
     }
 
@@ -86,6 +83,6 @@ public class ReflectionBenchmark {
         bh.consume(function.apply(student));
     }
 
-    record Student(String name, String surname) {
-    }
+    record Student(String name, String surname) {}
+
 }
